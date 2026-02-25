@@ -85,5 +85,13 @@ public class Student {
 		setPersonCode(inputPersonCode);
 	}
 	//5. toString funkcija
+	@Override //var so nerakstit, bet tapat no bkect kalses toString funkcija tiks parrakstita
+	public String toString() {
+		// Piemers, 1: Karina Skirmante (121212-12345)
+		String result = studId + ": " + name + " " + surname + " (" + personCode + ")";
+		return result;
+	}
+	
+	
 	//6. visas parejas funkcijas pec nepieciesamibas
 }
