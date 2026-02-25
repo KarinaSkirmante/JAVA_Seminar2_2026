@@ -71,7 +71,19 @@ public class Student {
 	}
 	
 	//4.1. bezargumenta konstruktors
+	public Student() {
+		setStudId();
+		setName("Janis");
+		setSurname("Berzins-Kalnins");
+		setPersonCode("121212-12345");
+	}
 	//4.2. argumuneta konstruktors
+	public Student(String inputName, String inputSurname, String inputPersonCode) {
+		setStudId();
+		setName(inputName);
+		setSurname(inputSurname);
+		setPersonCode(inputPersonCode);
+	}
 	//5. toString funkcija
 	//6. visas parejas funkcijas pec nepieciesamibas
 }
