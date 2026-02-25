@@ -85,8 +85,29 @@ public class Professor {
 	
 	
 	//4.1. bez ar gumenta konstruktors
+	public Professor() {
+		setProfId();
+		setName("Karina");
+		setSurname("Skirmante");
+		setPersonCode("121212-56794");
+		setDegree(ProfDegree.master);
+	}
 	//4.2. argumenta konstruktors
-	//5. toString vunkaijas
+	public Professor(String inputName, String inputSurname, String inputPersonCode, 
+			ProfDegree inputDegree) {
+		setProfId();
+		setName(inputName);
+		setSurname(inputSurname);
+		setPersonCode(inputPersonCode);
+		setDegree(inputDegree);
+	}
+	//5. toString funkcija
+	public String toString() {
+
+		String result = profId + ": " + name + " " + surname + " (" + personCode + ") " +
+		degree;
+		return result;
+	}
 	//6. citas funkcijas (ja nepieciesams)
 
 }
