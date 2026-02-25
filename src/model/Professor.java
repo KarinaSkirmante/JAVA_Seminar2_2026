@@ -11,7 +11,27 @@ public class Professor {
 	private ProfDegree degree;
 	
 	//2. getters
+	public long getProfId() {
+		return profId;
+	}
+	public String getName() {
+		return name;
+	}
+	public String getSurname() {
+		return surname;
+	}
+	public String getPersonCode() {
+		return personCode;
+	}
+	public ProfDegree getDegree() {
+		return degree;
+	}
+	
+
+	
 	//3. setters
+	
+	
 	//4.1. bez ar gumenta konstruktors
 	//4.2. argumenta konstruktors
 	//5. toString vunkaijas
