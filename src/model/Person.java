@@ -55,6 +55,24 @@ public class Person {
 	}
 	
 	//4.no args constr
+	public Person() {
+		setName("Liga");
+		setSurname("Jauka");
+		setPersonCode("090923-12345");
+	}
 	//5. args construct
+	public Person(String inputName, String inputSurname, String inputPersonCode) {
+		setName(inputName);
+		setSurname(inputSurname);
+		setPersonCode(inputPersonCode);
+	}
+	
 	//6. toString
+	public String toString()
+	{
+		String result = name + " " + surname + " (" + personCode + ")";
+		return result;
+	}
+	
+	
 }
