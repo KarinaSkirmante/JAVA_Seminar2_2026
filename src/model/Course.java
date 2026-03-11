@@ -63,13 +63,25 @@ public class Course {
 		}
 	
 	}
-	
-
-	
-	
+		
 	
 	//4. bez argumenta konstruktors
+	public Course() {
+		setCourseId();
+		setTitle("JAVA");
+		setCreditPoints((byte)6);
+		setProfessor(new Professor());//sim noklusetajam kursam bus piesaistit noklusetais professors
+	}
+	
 	//5. argumenta konstruktors
+	public Course(String inputTitle, byte inputCreditPoints, Professor inputProfessor) {
+		setCourseId();
+		setTitle(inputTitle);
+		setCreditPoints(inputCreditPoints);
+		setProfessor(inputProfessor);
+		
+	}
+	
 	//6. toString funkcija
 	//7. papildus funkcijas (ja nepieciesams)
 
