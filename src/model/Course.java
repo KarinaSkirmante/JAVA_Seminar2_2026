@@ -83,6 +83,12 @@ public class Course {
 	}
 	
 	//6. toString funkcija
+	public String toString() {
+		//String result = courseId + ": " + title + " (" + creditPoints + "), " + professor;//automatiskis izsaucas professor.toString() 
+		String result = courseId + ": " + title + " (" + creditPoints + "), " 
+		+ professor.getName().charAt(0) + ". " + professor.getSurname();
+		return result;
+	}
 	//7. papildus funkcijas (ja nepieciesams)
 
 }
