@@ -2,12 +2,10 @@ package model;
 
 import model.enums.ProfDegree;
 
-public class Professor {
+public class Professor extends Person {
 	//1. mainigie
 	private long profId;
-	private String name;
-	private String surname;
-	private String personCode;
+
 	private ProfDegree degree;
 	
 	private static long counter = 10000;
@@ -16,15 +14,7 @@ public class Professor {
 	public long getProfId() {
 		return profId;
 	}
-	public String getName() {
-		return name;
-	}
-	public String getSurname() {
-		return surname;
-	}
-	public String getPersonCode() {
-		return personCode;
-	}
+	
 	public ProfDegree getDegree() {
 		return degree;
 	}
@@ -36,41 +26,7 @@ public class Professor {
 		counter++;
 	}
 		
-	public void setName(String inputName) {
-		if((inputName != null) && (!inputName.isEmpty()) && (inputName.matches("[A-Z]{1}[a-z]{2,15}([ ]{1}[A-Z]{1}[a-z]{2,15})?"))    )
-		{
-			name = inputName;
-		}
-		else
-		{
-			name = "Unknown";
-		}
-	}
 	
-	
-	public void setSurname(String inputSurname) {
-		if((inputSurname != null) && (!inputSurname.isEmpty()) 
-				&& (inputSurname.matches("[A-Z]{1}[a-z]{2,15}([-]{1}[A-Z]{1}[a-z]{2,15})?"))    )
-		{
-			surname = inputSurname;
-		}
-		else
-		{
-			surname = "Unknown";
-		}
-	}
-	
-	public void setPersonCode(String inputPersonCode) {
-		//TODO regex masku paskatities, lai ir atbilstosi dienu skaitam konkreta menesi
-		if((inputPersonCode != null) && (!inputPersonCode.isEmpty()) 
-				&& (inputPersonCode.matches("[0-9]{6}[-]{1}[0-9]{5}")) ) {
-			personCode = inputPersonCode;
-		}
-		else
-		{
-			personCode = "Unknown";
-		}
-	}
 	
 	public void setDegree(ProfDegree inputDegree) {
 		if(inputDegree!=null) {
@@ -86,19 +42,15 @@ public class Professor {
 	
 	//4.1. bez ar gumenta konstruktors
 	public Professor() {
+		super("Karina","Skirmante","121212-56794"); //tiek izsaukts: Person(String inputName, String inputSurname, String inputPersonCode)
 		setProfId();
-		setName("Karina");
-		setSurname("Skirmante");
-		setPersonCode("121212-56794");
 		setDegree(ProfDegree.master);
 	}
 	//4.2. argumenta konstruktors
 	public Professor(String inputName, String inputSurname, String inputPersonCode, 
 			ProfDegree inputDegree) {
+		super(inputName, inputSurname, inputPersonCode);
 		setProfId();
-		setName(inputName);
-		setSurname(inputSurname);
-		setPersonCode(inputPersonCode);
 		setDegree(inputDegree);
 	}
 	//5. toString funkcija
