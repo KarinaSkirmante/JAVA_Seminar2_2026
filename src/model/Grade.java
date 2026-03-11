@@ -81,6 +81,11 @@ public class Grade {
 		setCourse(inputCourse);
 	}
 	//6. toString
+	public String toString() {
+		String result = gradeId + ": " + student.getName().charAt(0) + ". " + student.getSurname()+
+				" nopelnija " + grValue + " " + course.getTitle();
+		return result;
+	}
 	//7. parejas funkcijas
 	
 }
