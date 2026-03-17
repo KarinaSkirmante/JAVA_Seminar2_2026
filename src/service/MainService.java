@@ -2,10 +2,11 @@ package service;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Arrays; 
 
 import model.Course;
 import model.Grade;
+import model.Person;
 import model.Professor;
 import model.Student;
 import model.enums.ProfDegree;
@@ -13,32 +14,44 @@ import model.enums.ProfDegree;
 public class MainService {
 
 	
-	private static ArrayList<Student> allStudents = new ArrayList<Student>();
-	private static ArrayList<Professor> allProfessors = new ArrayList<Professor>();
+	private static ArrayList<Person> allPersons = new ArrayList<Person>();//te var glabat personas, stduentus un profesorus
 	private static ArrayList<Course> allCourses = new ArrayList<Course>();
 	private static ArrayList<Grade> allGrades = new ArrayList<Grade>();
 	
 	public static void main(String[] args) {
-		System.out.println("------STUDENTS-------------");
+	
 		//datu tips  nosaukums   = new konstruktors;
 		Student      stud1       = new Student();
 		Student      stud2       = new Student("Rendijs", "Serna", "121234-45678");
 		Student      stud3       = new Student("671547", "Ser2d", null);
-		allStudents.add(stud1);
-		allStudents.add(stud2);
-		allStudents.add(stud3);
+		allPersons.add(stud1);
+		allPersons.add(stud2);
+		allPersons.add(stud3);
 		
-		for(Student tempS : allStudents) {
-			System.out.println(tempS);
-		}
-				
 		
-		System.out.println("------PROFESSORS-------------");
 		Professor prof1 = new Professor();
 		Professor prof2 = new Professor("Vairis", "Caune", "120914-12121", ProfDegree.phd);
 		Professor prof3 = new Professor("Galina", "Hilkevica", "121298-34567", ProfDegree.phd);
-		allProfessors.addAll(Arrays.asList(prof1, prof2, prof3));
-		System.out.println(allProfessors);
+		allPersons.addAll(Arrays.asList(prof1, prof2, prof3));
+		
+				
+		System.out.println("Visas personas: " +allPersons);
+		
+		System.out.println("------STUDENTS-------------");
+		for(Person tempP: allPersons) {
+			if(tempP instanceof Student) {//parbauda, vai persona ir students
+				System.out.println(tempP);
+			}
+		}
+		
+		System.out.println("------PROFESSORS-------------");
+		for(Person tempP : allPersons) {
+			if(tempP  instanceof Professor) {//parbauda, vai persona ir students
+				System.out.println(tempP);
+			}
+		}
+		
+		
 		
 		System.out.println("------COURSE-------------");
 		Course course1 = new Course();
@@ -58,12 +71,24 @@ public class MainService {
 		try
 		{
 			createStudent("Janis", "Berzins", "090512-23456");
-			System.out.println(allStudents);
+			for(Person tempP: allPersons) {
+				if(tempP instanceof Student) {//parbauda, vai persona ir students
+					System.out.println(tempP);
+				}
+			}
 			System.out.println(getStudentById(4));//Janis
 			System.out.println(updateById(1, "Rendijs", "Jaukais"));//Nomainits Rendija uzvards
-			System.out.println(allStudents);
+			for(Person tempP: allPersons) {
+				if(tempP instanceof Student) {//parbauda, vai persona ir students
+					System.out.println(tempP);
+				}
+			}
 			deleteById(2);//Tiek izdzest unknown students
-			System.out.println(allStudents);
+			for(Person tempP: allPersons) {
+				if(tempP instanceof Student) {//parbauda, vai persona ir students
+					System.out.println(tempP);
+				}
+			}
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -88,14 +113,14 @@ public class MainService {
 	{
 		//TODO parbaudiet ienakosos paramatrus
 		
-		for(Student tempS : allStudents) {
-			if(tempS.getPersonCode().equals(inputPersonCode)) {
+		for(Person tempS : allPersons) {
+			if(tempS instanceof Student &&  tempS.getPersonCode().equals(inputPersonCode)) {
 				throw new Exception("Tads students jau eksiste");
 			}
 		}
 		
 		Student newStudent = new Student(inputName, inputSurname, inputPersonCode);
-		allStudents.add(newStudent);
+		allPersons.add(newStudent);
 		
 		
 	}
@@ -107,10 +132,15 @@ public class MainService {
 			throw new Exception("Id nevar but negativs");
 		}
 		
-		for(Student tempS : allStudents) {
-			if(tempS.getStudId() == id) {
-				return tempS;
+		for(Person tempS : allPersons) {
+			if(tempS instanceof Student) {//parbaudam, vai persona ir students
+				Student stud = (Student)tempS;//parveidojam atrasoto personu uz Student tipa
+				if(stud.getStudId() == id) {
+					return stud;
+				}
 			}
+			
+			
 		}
 		
 		throw new Exception("Students ar id " + id + " neeksiste");
@@ -137,7 +167,7 @@ public class MainService {
 	//D - delete
 	public static void deleteById(int id) throws Exception{
 		Student studentForDeleting = getStudentById(id);
-		allStudents.remove(studentForDeleting);
+		allPersons.remove(studentForDeleting);
 	}
 	
 	
@@ -148,9 +178,13 @@ public class MainService {
 			throw new Exception("Neeksistejoss grads");
 		}
 		ArrayList<Professor> result = new ArrayList<Professor>();
-		for(Professor tempP: allProfessors) {
-			if(tempP.getDegree().equals(inputDegree)) {
-				result.add(tempP);
+		for(Person tempP: allPersons) {
+			if(tempP instanceof Professor) {//vai persona ir Professors
+				Professor prof = (Professor)tempP;
+			
+				if(prof.getDegree().equals(inputDegree)) {
+					result.add(prof);
+				}
 			}
 		}
 		
