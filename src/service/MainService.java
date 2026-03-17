@@ -19,7 +19,7 @@ public class MainService {
 	private static ArrayList<Grade> allGrades = new ArrayList<Grade>();
 	
 	public static void main(String[] args) {
-		System.out.println("----STUDENTS-------------");
+		System.out.println("------STUDENTS-------------");
 		//datu tips  nosaukums   = new konstruktors;
 		Student      stud1       = new Student();
 		Student      stud2       = new Student("Rendijs", "Serna", "121234-45678");
@@ -33,26 +33,42 @@ public class MainService {
 		}
 				
 		
-		System.out.println("----PROFESSORS-------------");
+		System.out.println("------PROFESSORS-------------");
 		Professor prof1 = new Professor();
 		Professor prof2 = new Professor("Vairis", "Caune", "120914-12121", ProfDegree.phd);
 		Professor prof3 = new Professor("Galina", "Hilkevica", "121298-34567", ProfDegree.phd);
 		allProfessors.addAll(Arrays.asList(prof1, prof2, prof3));
 		System.out.println(allProfessors);
 		
-		System.out.println("----COURSE-------------");
+		System.out.println("------COURSE-------------");
 		Course course1 = new Course();
 		Course course2 = new Course("Algoritmu teorija", (byte)3, prof2);
 		Course course3 = new Course("Matematiska analize", (byte)6, prof3);
 		allCourses.addAll(Arrays.asList(course1, course2, course3));
 		System.out.println(allCourses);
 		
-		System.out.println("----GRADE-------------");
+		System.out.println("-------GRADE-------------");
 		Grade gr1 = new Grade();// Janis nopelnija 1 JAVA
 		Grade gr2 = new Grade(10, stud2, course1);//Rendijs nopelnija 10 JAVA
 		Grade gr3 = new Grade(7, stud2, course2);//Rendijs nopelnija 7 Algoritmu teorija
 		allGrades.addAll(Arrays.asList(gr1, gr2, gr3));
 		System.out.println(allGrades);
+		
+		System.out.println("-------CRUD TESTING-------------");
+		try
+		{
+			createStudent("Janis", "Berzins", "090512-23456");
+			System.out.println(allStudents);
+			System.out.println(getStudentById(4));//Janis
+			System.out.println(updateById(1, "Rendijs", "Jaukais"));//Nomainits Rendija uzvards
+			System.out.println(allStudents);
+			deleteById(2);//Tiek izdzest unknown students
+			System.out.println(allStudents);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 		
 		
 	}
