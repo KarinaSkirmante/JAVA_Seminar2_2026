@@ -68,8 +68,14 @@ public class MainService {
 		catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
-		
+		System.out.println("-------FILTER TESTING-------------");
+		try
+		{
+		System.out.println(filterAllProfessorsWithSpecificDegree(ProfDegree.phd));
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 		
 	}
 	
@@ -133,8 +139,29 @@ public class MainService {
 	}
 	
 	
-	
-	
+	//izfiltret un atgreizt visus profesorus, kuru degree ir master
+	public static ArrayList<Professor> filterAllProfessorsWithSpecificDegree(ProfDegree inputDegree) throws Exception
+	{
+		if(inputDegree == null) {
+			throw new Exception("Neeksistejoss grads");
+		}
+		ArrayList<Professor> result = new ArrayList<Professor>();
+		for(Professor tempP: allProfessors) {
+			if(tempP.getDegree().equals(inputDegree)) {
+				result.add(tempP);
+			}
+		}
+		
+		if(result.isEmpty()) {
+			throw new Exception("Sistema nav profesori ar " + inputDegree + " gradu");
+		}
+		
+		return result;
+		
+		
+		
+		
+	}
 	
 	
 	
