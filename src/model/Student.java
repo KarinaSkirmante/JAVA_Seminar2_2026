@@ -42,6 +42,7 @@ public class Student extends Person{
 		String result = studId + ": " + name + " " + surname + " (" + personCode + ")";
 		return result;
 	}
+
 	
 	
 	//6. visas parejas funkcijas pec nepieciesamibas
