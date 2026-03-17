@@ -93,6 +93,30 @@ public class MainService {
 		
 	}
 	
+	//U - update
+	public static Student updateById(int id, String inputName, String inputSurname) throws Exception {
+		Student studentForUpdating = getStudentById(id);
+		
+		//TODO parbaudit inputName un inputSurname
+		if(!studentForUpdating.getName().equals(inputName)) {
+			studentForUpdating.setName(inputName);
+		}
+		
+		if(!studentForUpdating.getSurname().equals(inputSurname)) {
+			studentForUpdating.setSurname(inputSurname);
+		}
+		
+		return studentForUpdating;
+		
+	}
+	
+	//D - delete
+	public static void deleteById(int id) throws Exception{
+		Student studentForDeleting = getStudentById(id);
+		allStudents.remove(studentForDeleting);
+	}
+	
+	
 	
 	
 	
