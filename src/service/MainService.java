@@ -157,12 +157,31 @@ public class MainService {
 		}
 		
 		return result;
-		
-		
-		
-		
-	}
 	
+	}
+
+	public static float calculateAVGgradeForStudent(String personCode) throws Exception {
+		if(personCode == null || personCode.isEmpty() || !personCode.matches("[0-9]{6}[-]{1}[0-9]{5}")){
+			throw new Exception("Nepareizi ievades dati");
+		}
+		int count = 0;
+		float sum = 0;
+		for(Grade tempG : allGrades) {
+			if(tempG.getStudent().getPersonCode().equals(personCode)) {
+				count++;
+				sum = sum + tempG.getGrValue();
+			}
+		}
+		
+		if(count == 0) {
+			throw new Exception("Studentam ar personas kodu " + personCode + " nav atzimju un tapec nevar aprekinat videjo atzimi");
+		}
+		
+		return (sum/count);
+		
+		
+		//atgriezam videjo vertibu
+	}
 	
 	
 
